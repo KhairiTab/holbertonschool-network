@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-# Show all ipv4 currently use
-ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2
+
+# Display all active IPv4 addresses
+ip -4 addr show | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | sort | uniq
